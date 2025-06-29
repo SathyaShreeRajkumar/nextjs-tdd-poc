@@ -1,7 +1,9 @@
 import HomePage from "@/components/home-page";
 import { HOMEPAGE_CONST } from "@/constants/app-constants";
 import { APP_ROUTES } from "@/constants/app-route";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { START_SHOPPING_BUTTON_TEST_ID } from "@/constants/data-testid/home-page";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { useRouter } from "next/navigation";
 
 jest.mock("next/navigation", () => ({
@@ -23,7 +25,7 @@ describe("Home Page", () => {
     expect(startButton).toBeDefined();
   });
 
-  it("should navigate to shopping page on button click ", () => {
+  it("should navigate to shopping page on button click ", async () => {
     const pushMock = jest.fn();
     (useRouter as jest.Mock).mockImplementation(() => ({
       push: pushMock,
@@ -31,11 +33,9 @@ describe("Home Page", () => {
 
     renderComponent();
 
-    const submitButton = screen.getByRole("button", {
-      name: HOMEPAGE_CONST.START_SHOPPING,
-    });
+    const startShoppingButton = screen.getByTestId(START_SHOPPING_BUTTON_TEST_ID);
 
-    fireEvent.click(submitButton);
+    await userEvent.click(startShoppingButton);
 
     expect(pushMock).toHaveBeenCalledWith(APP_ROUTES.PRODUCTS);
   });

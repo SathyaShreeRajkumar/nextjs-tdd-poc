@@ -6,7 +6,7 @@ const NavBar = () => {
     <nav>
       <nav className="p-4 bg-gray-800 text-white flex gap-4">
         {NAV_LINKS.map(({ href, label }) => (
-          <Link key={href} href={href}>
+          <Link key={href} href={href} data-testid="nav-links">
             {label}
           </Link>
         ))}

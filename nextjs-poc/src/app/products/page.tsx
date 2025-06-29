@@ -1,21 +1,10 @@
-import { PRODUCTS_CONST } from "@/constants/app-constants";
-import productsJson from "@/data/products.json";
-import { Products } from "@/types/products";
+import { getProducts } from "@/services/products-service";
+import ProductsList from "./product-list";
 
-export default function ProductsPage() {
-  const products: Products[] = productsJson ;
+export default async function ProductsPage() {
+   const products = await getProducts();
 
   return (
-    <main className="p-8">
-      <h1 className="text-2xl font-bold mb-4">{PRODUCTS_CONST.PRODUCTS}</h1>
-      <ul className="space-y-2">
-        {products.map((product) => (
-          <li key={product.id} className="p-4 border rounded shadow">
-            <p className="font-semibold">{product.name}</p>
-            <p>{product.price}</p>
-          </li>
-        ))}
-      </ul>
-    </main>
+    <ProductsList products={products} />
   );
 }
