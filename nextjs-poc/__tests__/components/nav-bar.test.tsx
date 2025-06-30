@@ -3,6 +3,7 @@ import { NAV_LINKS } from "@/constants/nav-bar";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { NAV_LINKS_TEST_ID } from "@/constants/data-testid/nav-bar";
+import { HREF_ATTRIBUTE } from "../constants/test-constants";
 
 describe("NavBar Component", () => {
   const renderComponent = () => {
@@ -17,7 +18,7 @@ describe("NavBar Component", () => {
 
       expect(navItem).toBeDefined();
 
-      expect(navItem).toHaveAttribute("href", href);
+      expect(navItem).toHaveAttribute(HREF_ATTRIBUTE, href);
     });
   });
 

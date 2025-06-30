@@ -1,0 +1,1 @@
+export const HREF_ATTRIBUTE = "href";
