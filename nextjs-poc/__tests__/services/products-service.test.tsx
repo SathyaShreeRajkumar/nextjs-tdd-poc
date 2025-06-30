@@ -17,7 +17,7 @@ describe("ProductsService", () => {
   });
 
   it("should throw an error if fetch fails", async () => {
-    (fetch as jest.Mock).mockRejectedValue(new Error(PRODUCTS_ERROR));
+    (fetch as jest.Mock).mockResolvedValue(new Error(PRODUCTS_ERROR));
 
     await expect(getProducts()).rejects.toThrow(PRODUCTS_ERROR);
   });

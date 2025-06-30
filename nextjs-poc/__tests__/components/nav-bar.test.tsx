@@ -16,17 +16,19 @@ describe("NavBar Component", () => {
     NAV_LINKS.forEach(({ href, label }) => {
       const navItem = screen.getByText(label);
 
-      expect(navItem).toBeDefined();
+      expect(navItem).toBeInTheDocument();
 
       expect(navItem).toHaveAttribute(HREF_ATTRIBUTE, href);
     });
   });
 
-  it("should render correct number of nav links", () => {
+  it("should render correct nav links", () => {
     renderComponent();
 
-    const navItemLink = screen.getAllByTestId(NAV_LINKS_TEST_ID);
-
-    expect(navItemLink).toHaveLength(NAV_LINKS.length);
+    NAV_LINKS.forEach(({ label }) => {
+      const link = screen.getByTestId(`${NAV_LINKS_TEST_ID}-${label}`);
+      
+      expect(link).toBeInTheDocument();
+    });
   });
 });

@@ -9,9 +9,9 @@ const config: Config = {
     coverageProvider: 'v8',
     testEnvironment: 'jsdom',
     testPathIgnorePatterns: ['__tests__/__fixtures__'],
-//     setupFilesAfterEnv: [
-//     "<rootDir>/src/setupTests.ts"
-//   ]
+    moduleNameMapper: {
+        '^@/(.*)$': '<rootDir>/src/$1',
+    }
 };
 
 export default createJestConfig(config);

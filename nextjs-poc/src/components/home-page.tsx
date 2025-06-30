@@ -2,6 +2,7 @@
 
 import { HOMEPAGE_CONST } from '@/constants/app-constants';
 import { APP_ROUTES } from '@/constants/app-route';
+import { START_SHOPPING_BUTTON_TEST_ID } from '@/constants/data-testid/home-page';
 import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
@@ -17,7 +18,7 @@ export default function HomePage() {
       <button
         onClick={handleClick}
         className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
-        data-testid="start-shopping-button"
+        data-testid={START_SHOPPING_BUTTON_TEST_ID}
       >
        {HOMEPAGE_CONST.START_SHOPPING}
       </button>
