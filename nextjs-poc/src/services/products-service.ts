@@ -5,6 +5,11 @@ export type Products = {
   id: string;
   name: string;
   price: string;
+  model: string;
+  description: string;
+  specs: {
+    [key: string]: string;
+  };
 };
 
 export async function getProducts(): Promise<Products[]> {
@@ -15,4 +20,17 @@ export async function getProducts(): Promise<Products[]> {
   }
 
   return response.json();
+}
+
+export async function getProductById(
+  id: string
+): Promise<Products | undefined> {
+  const response = await fetch(API_URLS.PRODUCTS_URL);
+
+  if (!response.ok) {
+    throw new Error(PRODUCTS_ERROR);
+  }
+
+  const products: Products[] = await response.json();
+  return products.find((product) => product.id === id);
 }

@@ -1,4 +1,4 @@
-import { getProducts } from "@/services/products-service";
+import { getProductById, getProducts } from "@/services/products-service";
 import { mockProducts } from "../__fixtures__/products";
 import { API_URLS } from "@/constants/api-urls";
 import { PRODUCTS_ERROR } from "@/constants/service-constants";
@@ -20,5 +20,21 @@ describe("ProductsService", () => {
     (fetch as jest.Mock).mockResolvedValue(new Error(PRODUCTS_ERROR));
 
     await expect(getProducts()).rejects.toThrow(PRODUCTS_ERROR);
+  });
+
+  it("should return product data by id", async () => {
+    (fetch as jest.Mock).mockResolvedValue({
+      ok: true,
+      json: async () => mockProducts,
+    });
+
+    const product = await getProductById(mockProducts[0].id);
+    expect(product).toEqual(mockProducts[0]);
+  });
+
+  it("should throw an error if fetch fails when getting product by id", async () => {
+    (fetch as jest.Mock).mockResolvedValue(new Error(PRODUCTS_ERROR));
+
+    await expect(getProductById("some-id")).rejects.toThrow(PRODUCTS_ERROR);
   });
 });
