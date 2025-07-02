@@ -10,5 +10,5 @@ export default async function ProductDetailsPage({ params }: ProductPageProps) {
 
   const product = await getProductById(id);
 
-  return <ProductDetails product={product} />;
+  return <>{product && <ProductDetails product={product} />}</>;
 }

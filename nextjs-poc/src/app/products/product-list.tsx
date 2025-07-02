@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function ProductsList({ products }: { products: Products[] }) {
   return (
-    <main className="p-8">
+    <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">{PRODUCTS_CONST.PRODUCTS}</h1>
       <ul className="space-y-2 w-1/2 ml-0 mr-auto">
         {products.map((product) => (
@@ -17,6 +17,6 @@ export default function ProductsList({ products }: { products: Products[] }) {
           </li>
         ))}
       </ul>
-    </main>
+    </div>
   );
 }
