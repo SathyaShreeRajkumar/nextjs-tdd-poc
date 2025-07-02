@@ -8,9 +8,12 @@ export const PRODUCTS_CONST = {
   MODELS: "Model:",
   PRICE: "Price:",
   SPECIFICATIONS: "Specifications:",
+  ADD_TO_FAVORITES: "Add to Favorites",
+  REMOVE_FROM_FAVORITES: "Remove from Favorites",
 };
 
 export const COMMON_CONST = {
   SOMETHING_WENT_WRONG: "Something went wrong!",
   TRY_AGAIN: "Try Again",
+  CONTEXT_ERROR: "Context not found",
 };
