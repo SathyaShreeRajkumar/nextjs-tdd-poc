@@ -16,3 +16,5 @@ export const mockProducts = Array.from({ length: 5 }, () => ({
     })}" ${faker.commerce.productMaterial()} Display`,
   },
 }));
+
+export const mockSearchProduct = faker.commerce.productName();

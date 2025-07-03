@@ -2,7 +2,7 @@
 
 import { COMMON_CONST } from "@/constants/app-constants";
 import { Products } from "@/services/products-service";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { createContext } from "react";
 
 export type ProductContextType = {
@@ -18,7 +18,7 @@ export const ProductProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [favorites, setFavorites] = React.useState<Products[]>([]);
+  const [favorites, setFavorites] = useState<Products[]>([]);
 
   const addToFavorites = (product: Products) => {
     setFavorites((prev) => [...prev, product]);

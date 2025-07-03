@@ -1,0 +1,1 @@
+export const CONTACT_SUBMIT_BUTTON_TEST_ID = "submit-button";
