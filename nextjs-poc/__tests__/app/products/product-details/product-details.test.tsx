@@ -18,36 +18,33 @@ jest.mock("@/context/product-context", () => ({
 
 describe("ProductDetails", () => {
 
+  const [product] = mockProducts(1);
   const renderComponent = () => {
-    render(<ProductDetails product={mockProducts[0]} />);
+    render(<ProductDetails product={product} />);
   };
 
   it("should render all product details correctly", () => {
     renderComponent();
 
-    const mockProduct = mockProducts[0];
-
-    expect(screen.getByText(mockProduct.name)).toBeInTheDocument();
+    expect(screen.getByText(product.name)).toBeInTheDocument();
 
     expect(
-      screen.getByText(`${PRODUCTS_CONST.MODELS} ${mockProduct.model}`)
+      screen.getByText(`${PRODUCTS_CONST.MODELS} ${product.model}`)
     ).toBeInTheDocument();
 
-    expect(screen.getByText(mockProduct.description)).toBeInTheDocument();
+    expect(screen.getByText(product.description)).toBeInTheDocument();
 
     expect(
-      screen.getByText(`${PRODUCTS_CONST.PRICE} ${mockProduct.price}`)
+      screen.getByText(`${PRODUCTS_CONST.PRICE} ${product.price}`)
     ).toBeInTheDocument();
   });
 
   it("should render product specifications correctly", () => {
     renderComponent();
 
-    const mockProduct = mockProducts[0];
-
     expect(screen.getByText(PRODUCTS_CONST.SPECIFICATIONS)).toBeInTheDocument();
 
-    Object.entries(mockProduct.specs).forEach(([key, value]) => {
+    Object.entries(product.specs).forEach(([key, value]) => {
       expect(
         screen.getByText(
           (_content, element) => element?.textContent == `${key}: ${value}`
@@ -66,30 +63,30 @@ describe("ProductDetails", () => {
     renderComponent();
 
     const favoriteButton = screen.getByTestId(
-      `${FAVOURITE_BUTTON_TEST_ID}-${mockProducts[0].id}`
+      `${FAVOURITE_BUTTON_TEST_ID}-${product.id}`
     );
 
     expect(favoriteButton).toBeInTheDocument();
 
     await userEvent.click(favoriteButton);
 
-    expect(mockProductContext.addToFavorites).toHaveBeenCalledWith(mockProducts[0]);
+    expect(mockProductContext.addToFavorites).toHaveBeenCalledWith(product);
   });
 
   it("should remove from favorites when product is already a favorite", async () => {
     (useProductContext as jest.Mock).mockReturnValue({
-      favorites: [mockProducts[0]], 
+      favorites: [product], 
       addToFavorites: mockProductContext.addToFavorites,
       removeFromFavorites: mockProductContext.removeFromFavorites,
     });
 
     renderComponent();
 
-    const favoriteButton = screen.getByTestId(`${FAVOURITE_BUTTON_TEST_ID}-${mockProducts[0].id}`);
+    const favoriteButton = screen.getByTestId(`${FAVOURITE_BUTTON_TEST_ID}-${product.id}`);
     expect(favoriteButton).toBeInTheDocument();
 
     await userEvent.click(favoriteButton);
 
-    expect(mockProductContext.removeFromFavorites).toHaveBeenCalledWith(mockProducts[0].id);
+    expect(mockProductContext.removeFromFavorites).toHaveBeenCalledWith(product.id);
   });
 });

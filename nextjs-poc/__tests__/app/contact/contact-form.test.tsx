@@ -53,6 +53,7 @@ describe("Contact Form", () => {
     await userEvent.click(submitButton);
 
     const successMessage = screen.getByText(CONTACT_CONST.MESSAGE_SENT);
+    
     expect(successMessage).toBeInTheDocument();
 });
 });

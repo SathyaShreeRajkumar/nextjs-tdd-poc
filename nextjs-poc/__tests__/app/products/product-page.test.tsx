@@ -10,7 +10,7 @@ jest.mock("@/services/products-service", () => ({
 
 describe("Products Page", () => {
   it("renders the products list title", () => {
-    render(<ProductsList products={mockProducts} />);
+    render(<ProductsList products={mockProducts(5)} />);
 
     expect(screen.getByText(PRODUCTS_CONST.PRODUCTS)).toBeInTheDocument();
   });

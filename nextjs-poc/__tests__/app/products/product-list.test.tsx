@@ -6,8 +6,11 @@ import { mockProducts, mockSearchProduct } from "../../__fixtures__/products";
 import userEvent from "@testing-library/user-event";
 
 describe("Products Page", () => {
+
+   const products = mockProducts(5);
+
   const renderComponent = () => {
-    render(<ProductsList products={mockProducts} />);
+    render(<ProductsList products={products} />);
   };
 
   it("should render products page title", () => {
@@ -21,7 +24,7 @@ describe("Products Page", () => {
   it("should render all mocked products", () => {
     renderComponent();
 
-    mockProducts.forEach((product) => {
+   products.forEach((product) => {
       expect(screen.getByText(product.name)).toBeInTheDocument();
       expect(screen.getByText(product.price)).toBeInTheDocument();
     });

@@ -6,10 +6,13 @@ import { PRODUCTS_ERROR } from "@/constants/service-constants";
 global.fetch = jest.fn();
 
 describe("ProductsService", () => {
+  const mockData = mockProducts(5);
+  const [productItem] = mockData;
+
   it("should fetch products", async () => {
     (fetch as jest.Mock).mockResolvedValue({
       ok: true,
-      json: async () => mockProducts,
+      json: async () => mockData,
     });
 
     await getProducts();
@@ -25,16 +28,19 @@ describe("ProductsService", () => {
   it("should return product data by id", async () => {
     (fetch as jest.Mock).mockResolvedValue({
       ok: true,
-      json: async () => mockProducts,
+      json: async () => mockData,
     });
 
-    const product = await getProductById(mockProducts[0].id);
-    expect(product).toEqual(mockProducts[0]);
+    const product = await getProductById(productItem.id);
+
+    expect(product).toEqual(productItem);
   });
 
   it("should throw an error if fetch fails when getting product by id", async () => {
     (fetch as jest.Mock).mockResolvedValue(new Error(PRODUCTS_ERROR));
 
-    await expect(getProductById("some-id")).rejects.toThrow(PRODUCTS_ERROR);
+    await expect(getProductById(productItem.id)).rejects.toThrow(
+      PRODUCTS_ERROR
+    );
   });
 });
