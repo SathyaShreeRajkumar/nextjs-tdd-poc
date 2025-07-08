@@ -1,0 +1,1 @@
+export const NAV_LINKS_TEST_ID = 'nav-links';

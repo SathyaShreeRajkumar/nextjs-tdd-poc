@@ -1,0 +1,1 @@
+export const START_SHOPPING_BUTTON_TEST_ID = 'start-shopping-button';

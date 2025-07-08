@@ -1,0 +1,1 @@
+export const FAVOURITE_BUTTON_TEST_ID = "toggle-favorite-button";
