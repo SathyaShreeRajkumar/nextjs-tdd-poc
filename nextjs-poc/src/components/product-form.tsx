@@ -29,14 +29,14 @@ export default function ProductForm() {
   });
 
   function onSubmit() {
-     toast(PRODUCT_FORM_CONST.PRODUCT_FORM_TOAST_SUCCESS);
+    toast(PRODUCT_FORM_CONST.PRODUCT_FORM_TOAST_SUCCESS);
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 max-w-md mx-auto mt-14 p-4 border rounded-xl shadow"
+        className="space-y-6 max-w-md mx-auto mt-10 p-4 border rounded-xl shadow"
       >
         <FormField
           control={form.control}
