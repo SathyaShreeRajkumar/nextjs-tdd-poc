@@ -33,4 +33,17 @@ export const CONTACT_CONST = {
   MESSAGE_REQUIRED_VALIDATION_ERROR: "Message is required",
   EMAIL_VALIDATION_VALUE: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 };
+
+export const PRODUCT_FORM_CONST = {
+  PRODUCT_NAME_LABEL: "Product Name",
+  PRICE_LABEL: "Price",
+  CATEGORY_LABEL: "Category",
+  IN_STOCK_LABEL: "In Stock",
+  PRODUCT_NAME_PLACEHOLDER: "Enter product name",
+  PRICE_PLACEHOLDER: "Enter price",
+  CATEGORY_PLACEHOLDER: "e.g. Electronics",
+  IN_STOCK_PLACEHOLDER: "0",
+  SUBMIT_BUTTON_LABEL: "Submit",
+  PRODUCT_FORM_TOAST_SUCCESS: "Product submitted successfully!",
+}
  

@@ -1,6 +1,7 @@
 import NavBar from "@/components/nav-bar";
 import "./globals.css";
 import { ProductProvider } from "@/context/product-context";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function RootLayout({
   children,
@@ -12,6 +13,7 @@ export default function RootLayout({
       <body>
         <ProductProvider>
         <NavBar />
+        <Toaster  position="top-right" />
         {children}
         </ProductProvider>
       </body>
